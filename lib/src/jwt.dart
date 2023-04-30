@@ -37,7 +37,11 @@ class JWT {
         throw JWTInvalidError('invalid header');
       }
 
-      if (checkHeaderType && header['typ'] != 'JWT') {
+//       if (checkHeaderType && header['typ'] != 'JWT') {
+//         throw JWTInvalidError('not a jwt');
+//       }
+      
+      if (checkHeaderType && (header['typ']?.toLowerCase() ?? '') != 'jwt' && (header['type']?.toLowerCase() ?? '') != 'jwt') {
         throw JWTInvalidError('not a jwt');
       }
 
